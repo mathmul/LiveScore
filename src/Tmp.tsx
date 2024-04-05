@@ -1,37 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { fetchLiveScores, LiveScoreResponse } from './services/api';
+import React from 'react';
+import useLiveScore from './hooks/useLiveScore';
 
 const Tmp = () => {
-    const [liveScores, setLiveScores] = useState<LiveScoreResponse | null>(null);
-    const [error, setError] = useState<string | null>(null);
+    const { liveScores, error, loading } = useLiveScore();
 
-    useEffect(() => {
-        const getLiveScores = async () => {
-            try {
-                const data = await fetchLiveScores();
-                setLiveScores(data);
-            } catch (e) {
-                if (e instanceof Error) {
-                    setError(e.message);
-                } else {
-                    setError('An unknown error occurred');
-                }
-            }
-        };
+    const renderMatches = () => {
+        if (loading) return <div>Loading...</div>;
+        if (error) return <div>Error: {error}</div>;
+        if (!liveScores) return <div>No live score data available.</div>;
 
-        const intervalId = setInterval(() => {
-            getLiveScores();
-        }, 2000);
-
-        return () => clearInterval(intervalId);
-    }, []);
-
-    const renderMatches = (data: LiveScoreResponse) => {
-        return data.matches.map((match) => {
-            const homeTeam = data.teams.find(team => team.team_id === match.home_team_id);
-            const awayTeam = data.teams.find(team => team.team_id === match.away_team_id);
+        return liveScores.matches.map((match) => {
+            const homeTeam = liveScores.teams.find(team => team.team_id === match.home_team_id);
+            const awayTeam = liveScores.teams.find(team => team.team_id === match.away_team_id);
             const score = { home: 0, away: 0 };
-            data.events.forEach((event) => {
+            liveScores.events.forEach((event) => {
                 if (event.match_id === match.match_id && event.event_type === 'goal') {
                     if (event.score_team === 'home') {
                         score.home += event.score_amount ?? 0;
@@ -49,19 +31,7 @@ const Tmp = () => {
         });
     };
 
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
-    if (!liveScores) {
-        return <div>Loading...</div>;
-    }
-
-    return (
-        <div>
-            {renderMatches(liveScores)}
-        </div>
-    );
+    return <div>{renderMatches()}</div>;
 };
 
 export default Tmp;
