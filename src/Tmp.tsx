@@ -19,7 +19,11 @@ const Tmp = () => {
             }
         };
 
-        getLiveScores();
+        const intervalId = setInterval(() => {
+            getLiveScores();
+        }, 2000);
+
+        return () => clearInterval(intervalId);
     }, []);
 
     const renderMatches = (data: LiveScoreResponse) => {
