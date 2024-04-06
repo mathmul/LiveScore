@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Tmp from './Tmp';
 import TeamFlag from "./components/TeamFlag/TeamFlag";
+import ScoreBox from "./components/ScoreBox/ScoreBox";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
                       flagSrc={"https://flagcdn.com/w40/si.png"}
                       name={"Slovenia"}
                       orientation={"left"}/>
+            <br/>
+            <ScoreBox homeScore={1} awayScore={2}/>
             <br/>
             <br/>
             <Tmp/>
