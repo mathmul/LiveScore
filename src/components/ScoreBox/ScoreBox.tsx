@@ -7,9 +7,13 @@ export interface ScoreBoxProps {
 }
 
 const Box = styled.div`
-  background-color: blue;
-  color: white;
-  padding: .5rem;
+    font-size: var(--fontSize, 1.2rem);
+    font-weight: bold;
+    font-family: Arial;
+    background-color: #01a5e2;
+    color: white;
+    line-height: 100%;
+    padding: var(--spacingY) var(--spacingX);
 `;
 
 const ScoreBox: React.FC<ScoreBoxProps> = ({ homeScore, awayScore }) => {
