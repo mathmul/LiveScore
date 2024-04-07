@@ -2,28 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  position: relative;
-  height: 20vmin;
-  pointer-events: none;
-  color: inherit;
-}
-
-.logo-container {
-  position: relative;
-  color: skyblue;
-}
-
-.App-logo:not(.rotating) {
-  position: absolute;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo.rotating {
-    animation: App-logo-spin infinite 5s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,15 +13,50 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo-container {
+  display: grid;
+  grid-template-areas: 'single';
+  place-items: center;
+  transition: all 2000ms;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.circle {
+  grid-area: single;
+  width: 11.4vmin;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: translate(1px, 1px);
+}
+.circle.white {
+  background: white;
+  z-index: 1;
+  outline: 2px solid #282c34;
+}
+.circle.shadow {
+  opacity: .7;
+  background: radial-gradient(farthest-corner at 2vmin 2vmin, #fff 0%, black 60%);
+  z-index: 4;
+}
+
+.logo {
+  grid-area: single;
+  height: 20vmin;
+  pointer-events: none;
+  color: inherit;
+}
+.logo.shadow {
+  z-index: 2;
+}
+.logo.ball {
+  z-index: 3;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .logo.rotating {
+    animation: spin infinite 5s linear;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
 }

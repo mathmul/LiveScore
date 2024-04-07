@@ -3,6 +3,10 @@ import useLiveScore from '../../hooks/useLiveScore';
 import MatchRow from '../MatchRow/MatchRow';
 import styled from "styled-components";
 
+export interface LiveScoreProps {
+    onPhaseChange?: (phase: string) => void;
+}
+
 const IMAGES_URL = 'https://vgcommonstaging.aitcloud.de/livescore/images'
 
 const LiveScoreContainer = styled.div`
@@ -24,8 +28,14 @@ const LiveScoreContainer = styled.div`
     padding: .5em;
 `
 
-const LiveScore = () => {
+const LiveScore: React.FC<LiveScoreProps> = ({ onPhaseChange }) => {
     const { liveScores, error, loading } = useLiveScore();
+
+    React.useEffect(() => {
+        if (liveScores?.phase && onPhaseChange) {
+            onPhaseChange(liveScores.phase);
+        }
+    }, [liveScores?.phase, onPhaseChange]);
 
     if (loading) {
         return <div>Loading...</div>;
