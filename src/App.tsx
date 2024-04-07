@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
+import logoBall from './assets/football-ball.svg';
+import logoShadow from './assets/football-shadow.svg'
 import './App.css';
 import LiveScore from "./components/LiveScore/LiveScore";
 
@@ -7,9 +8,12 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
+                <div className="logo-container">
+                    <img src={logoShadow} className="App-logo" alt="logo"/>
+                    <img src={logoBall} className="App-logo rotating" alt="logo"/>
+                </div>
                 <br/>
-                <LiveScore />
+                <LiveScore/>
             </header>
         </div>
     );

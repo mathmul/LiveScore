@@ -3,13 +3,24 @@
 }
 
 .App-logo {
-  height: 10vmin;
+  position: relative;
+  height: 20vmin;
   pointer-events: none;
+  color: inherit;
+}
+
+.logo-container {
+  position: relative;
+  color: skyblue;
+}
+
+.App-logo:not(.rotating) {
+  position: absolute;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .App-logo.rotating {
+    animation: App-logo-spin infinite 5s linear;
   }
 }
 
