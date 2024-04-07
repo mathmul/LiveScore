@@ -51,7 +51,7 @@ const ScoreBox: React.FC<ScoreBoxProps> = ({ homeScore, awayScore }) => {
         setAnimate(true);
         setLastScorer(homeScore !== previousScores.homeScore ? 'home' : 'away');
         setShowFootballIcon(true);
-    }, [homeScore, awayScore]);
+    }, [homeScore, awayScore, previousScores.homeScore, previousScores.awayScore]);
 
     useEffect(() => {
         if (!scoreChanged)
@@ -65,7 +65,7 @@ const ScoreBox: React.FC<ScoreBoxProps> = ({ homeScore, awayScore }) => {
         }, animationDuration);
 
         return () => clearTimeout(timeoutId);
-    }, [scoreChanged]);
+    }, [scoreChanged, homeScore, awayScore]);
 
     const score = `${homeScore}:${awayScore}`;
     return (
