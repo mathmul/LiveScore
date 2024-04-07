@@ -24,6 +24,8 @@ dependencies installed that aren't even used in the project.
 The Live Score Display App showcases real-time scores of sports matches in a user-friendly interface. It's perfect for
 sports enthusiasts who want to stay updated on their favorite teams and matches without missing a beat.
 
+![image](https://github.com/mathmul/LiveScore/assets/25301301/32449ef3-a96b-454e-b636-fdc66b242e81)
+
 ### Features
 
 - Real-Time Updates: Scores are updated in real-time, ensuring you have the latest information.
