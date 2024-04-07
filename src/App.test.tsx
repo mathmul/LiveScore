@@ -34,5 +34,6 @@ test('renders learn LiveScore component', async () => {
   // FIXME: ## TO
 
   render(<App />);
-  await waitFor(() => expect(screen.getByTestId('LiveScore')).toBeInTheDocument());
+  const liveScoreComponent = await screen.findByTestId('LiveScore');
+  expect(liveScoreComponent).toBeInTheDocument();
 });

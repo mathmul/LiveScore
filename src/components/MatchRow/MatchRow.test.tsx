@@ -4,7 +4,7 @@ import MatchRow, { MatchRowProps } from './MatchRow';
 import { capitalize } from "../../utils/stringUtils";
 import TeamCrest from '../TeamCrest/TeamCrest';
 
-jest.mock('../ScoreBox/ScoreBox', () => (props: any) => <div data-testid="ScoreBox"></div>);
+jest.mock('../ScoreBox/ScoreBox', () => () => <div data-testid="ScoreBox"></div>);
 jest.mock('../TeamCrest/TeamCrest');
 
 afterEach(() => {

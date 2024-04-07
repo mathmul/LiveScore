@@ -71,17 +71,15 @@ describe('LiveScore', () => {
         });
         render(<LiveScore />);
 
-        await waitFor(() => {
-            expect(screen.getByAltText('Crest of VL Lisbon')).toBeInTheDocument();
-            expect(screen.getByAltText('Crest of VL Vienna')).toBeInTheDocument();
-            expect(screen.getByText('1:0')).toBeInTheDocument();
+        expect(await screen.findByAltText('Crest of VL Lisbon')).toBeInTheDocument();
+        expect(await screen.findByAltText('Crest of VL Vienna')).toBeInTheDocument();
+        expect(await screen.findByText('1:0')).toBeInTheDocument();
 
-            const secondRow = screen.getAllByTestId('MatchRow')[1];
-            const { getByText } = within(secondRow);
-            expect(getByText('PAR')).toBeInTheDocument();
-            expect(getByText('KIE')).toBeInTheDocument();
-            expect(getByText('0:1')).toBeInTheDocument();
-        });
+        const secondRow = await screen.findAllByTestId('MatchRow');
+        const { getByText } = within(secondRow[1]);
+        expect(getByText('PAR')).toBeInTheDocument();
+        expect(getByText('KIE')).toBeInTheDocument();
+        expect(getByText('0:1')).toBeInTheDocument();
     });
 });
 

@@ -12,7 +12,7 @@ const LiveScoreContainer = styled.div`
     
     font-size: 1.2rem;
     font-weight: bold;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     
     display: grid;
     grid-template-columns: 1fr min-content 1fr;
