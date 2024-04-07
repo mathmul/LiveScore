@@ -40,10 +40,7 @@ describe('ScoreBox', () => {
 
     it('shows the football icon after scoring for 2 seconds only', () => {
         const { rerender } = render(<ScoreBox { ...mock0to0 } />);
-
-        act(() => {
-            rerender(<ScoreBox { ...mock1to0 } />);
-        });
+        rerender(<ScoreBox { ...mock1to0 } />);
         expect(screen.getByAltText('Football icon')).toHaveClass('show-and-fade');
 
         act(() => {
