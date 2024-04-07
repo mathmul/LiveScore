@@ -1,43 +1,41 @@
-# Getting Started with Create React App
+# Live Score Display App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This live score display app is built using [Create React App](https://github.com/facebook/create-react-app) and
+showcases real-time sports game scores.
 
-## Available Scripts
+## Developer's note
 
-In the project directory, you can run:
+This is my first time using React for a project from scratch, so there's bound to be mistakes. Likely there are
+dependencies installed that aren't even used in the project.
 
-### `npm start`
+## Quick Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project uses Yarn as its package manager. Here's how to get it running:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `yarn start`
 
-### `npm test`
+Starts the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The app will reload if you edit and save your files.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `yarn test`
 
-### `npm run build`
+Runs the test suite in interactive watch mode. See more about
+[running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `yarn build`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Builds the app for production to the `build` folder, optimizing it for best performance. The output is minified and
+filenames include hashes. Your app is then ready for deployment. Learn more about
+[deployment](https://facebook.github.io/create-react-app/docs/deployment).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `yarn eject`
 
-### `npm run eject`
+**Caution: irreversible operation.** Use `eject` to customize build tool and configuration choices. This command copies
+all config files and dependencies directly into your project, so you have full control. Note: Once you `eject`, there's
+no going back!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If you don’t want to eject, that's okay! The setup is intended for small to midsize deployments, and you can make many
+customizations within the limitations of Create React App.
 
 ## Learn More
 
