@@ -39,28 +39,52 @@ sports enthusiasts who want to stay updated on their favorite teams and matches 
 - TypeScript: Ensures type safety across the app, enhancing code quality and maintainability.
 - Styled Components: Leverages styled-components for scoped styling and theme management.
 - React Testing Library: For robust unit and integration tests, ensuring reliability.
+- Stryker Mutator: Employs mutation testing to assess the resilience of the test suite, further ensuring code quality and robustness.
 
 ## Getting Started
 
 To run the app locally:
 
 ```shell
-yarn install    # Install dependencies
-yarn start      # Run the app in development mode
+yarn install          # Install dependencies
+yarn start            # Run the app in development mode
 ```
 
 ## Testing
 
-Execute tests using the following command:
+Our testing strategy encompasses both unit testing with Jest and advanced mutation testing with Stryker, ensuring
+comprehensive coverage and code quality. This approach not only verifies that our code behaves as expected under
+a variety of scenarios but also challenges our tests to catch any unintended changes, reinforcing the
+reliability of our application.
+
+### Unit testing
+
+Execute unit tests using the following command to verify individual parts of the application work as intended:
 
 ```shell
-yarn test       # Run the test suite
+yarn test             # Run the test suite
 ```
+
+### Mutation Testing
+
+Beyond unit testing, we employ mutation testing with Stryker to evaluate the strength of our test suite. By deliberately
+introducing mutations to our code, we can identify any deficiencies in our tests, providing a unique opportunity to
+enhance test effectiveness and coverage.
+
+Run mutation testing and review the resilience of your test suite with:
+
+```shell
+yarn test:mutation    # Run mutation tests with Stryker
+```
+
+A detailed report is generated in reports/stryker-mutation.html, offering valuable insights into test suite performance
+against code mutations. Utilizing mutation testing is key to uncovering potential areas for improvement and achieving
+a higher standard of code quality.
 
 ## Build for deployment
 
 ```shell
-yarn build      # Build an optimized version for deployment
+yarn build            # Build an optimized version for deployment
 ```
 
 ## Learn More
