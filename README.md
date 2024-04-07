@@ -11,6 +11,8 @@ showcases real-time sports game scores.
         - [Technology Stack](#technology-stack)
     - [Getting Started](#getting-started)
     - [Testing](#testing)
+        - [Unit testing](#unit-testing)
+        - [Mutation testing](#mutation-testing)
     - [Build for deployment](#build-for-deployment)
     - [Learn More](#learn-more)
 
