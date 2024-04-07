@@ -44,7 +44,7 @@ describe('ScoreBox', () => {
         expect(screen.getByAltText('Football icon')).toHaveClass('show-and-fade');
 
         act(() => {
-            jest.advanceTimersByTime(2100);
+            jest.advanceTimersByTime(2000);
         });
         expect(screen.getByAltText('Football icon')).not.toHaveClass('show-and-fade');
     });

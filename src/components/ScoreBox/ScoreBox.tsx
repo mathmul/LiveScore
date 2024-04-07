@@ -10,7 +10,7 @@ export interface ScoreBoxProps {
 
 const animationDuration = 2000; // 2s
 
-const Box = styled.div<{ $animate: boolean; $showFootball: 'home'|'away'|'none' }>`
+const Box = styled.div<{ $animate: boolean; $showFootball: 'home'|'away' }>`
     line-height: 100%;
     
     position: relative;
@@ -39,27 +39,33 @@ const Box = styled.div<{ $animate: boolean; $showFootball: 'home'|'away'|'none' 
 const ScoreBox: React.FC<ScoreBoxProps> = ({ homeScore, awayScore }) => {
     const [animate, setAnimate] = useState(false);
     const [previousScores, setPreviousScores] = useState({ homeScore, awayScore });
-    const [lastScorer, setLastScorer] = useState<'home' | 'away' | 'none'>('none');
+    const [scoreChanged, setScoreChanged] = useState(false);
+    const [lastScorer, setLastScorer] = useState<'home' | 'away'>('home');
     const [showFootballIcon, setShowFootballIcon] = useState(false);
 
     useEffect(() => {
-        if (homeScore !== previousScores.homeScore || awayScore !== previousScores.awayScore) {
-            setAnimate(true);
-            const newScorer = homeScore !== previousScores.homeScore ? 'home' : 'away';
-            setLastScorer(newScorer);
+        if (homeScore === previousScores.homeScore && awayScore === previousScores.awayScore)
+            return;
 
-            setShowFootballIcon(true);
+        setScoreChanged(true);
+        setAnimate(true);
+        setLastScorer(homeScore !== previousScores.homeScore ? 'home' : 'away');
+        setShowFootballIcon(true);
+    }, [homeScore, awayScore]);
 
-            const timeoutId = setTimeout(() => {
-                setShowFootballIcon(false);
-                setAnimate(false);
-            }, animationDuration);
+    useEffect(() => {
+        if (!scoreChanged)
+            return;
 
-            return () => {
-                clearTimeout(timeoutId);
-            };
-        }
-    }, [homeScore, awayScore, previousScores.homeScore, previousScores.awayScore]);
+        const timeoutId = setTimeout(() => {
+            setScoreChanged(false);
+            setAnimate(false);
+            setPreviousScores({ homeScore, awayScore });
+            setShowFootballIcon(false);
+        }, animationDuration);
+
+        return () => clearTimeout(timeoutId);
+    }, [scoreChanged]);
 
     const score = `${homeScore}:${awayScore}`;
     return (

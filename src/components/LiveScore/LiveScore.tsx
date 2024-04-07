@@ -32,22 +32,19 @@ const LiveScore: React.FC<LiveScoreProps> = ({ onPhaseChange }) => {
     const { liveScores, error, loading } = useLiveScore();
 
     React.useEffect(() => {
-        if (liveScores?.phase && onPhaseChange) {
+        if (onPhaseChange && liveScores?.phase) {
             onPhaseChange(liveScores.phase);
         }
     }, [liveScores?.phase, onPhaseChange]);
 
-    if (loading) {
+    if (loading)
         return <div>Loading...</div>;
-    }
 
-    if (error) {
+    if (error)
         return <div>Error: {error}</div>;
-    }
 
-    if (!liveScores) {
+    if (!liveScores)
         return <div>No live scores available.</div>;
-    }
 
     return (
         <LiveScoreContainer data-testid="LiveScore" aria-live="polite" aria-label="Live score updates">
@@ -58,7 +55,8 @@ const LiveScore: React.FC<LiveScoreProps> = ({ onPhaseChange }) => {
                 const homeScore = matchEvents.filter(event => event.event_type === 'goal' && event.score_team === 'home').length;
                 const awayScore = matchEvents.filter(event => event.event_type === 'goal' && event.score_team === 'away').length;
 
-                if (!homeTeam || !awayTeam) return null;
+                if (!homeTeam || !awayTeam)
+                    return null;
 
                 return (
                     <MatchRow

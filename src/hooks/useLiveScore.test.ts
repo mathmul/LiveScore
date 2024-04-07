@@ -22,7 +22,8 @@ describe('useLiveScore', () => {
         expect(result.current.loading).toBe(true);
 
         await waitFor(() => { expect(result.current.loading).toBe(false) });
-        await waitFor(() => { expect(result.current.error).toBe(null) });
-        await waitFor(() => { expect(result.current.liveScores).toEqual(mockData) });
+
+        expect(result.current.error).toBe(null);
+        expect(result.current.liveScores).toEqual(mockData);
     });
 });

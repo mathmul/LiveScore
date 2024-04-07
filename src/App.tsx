@@ -5,9 +5,9 @@ import LiveScore, { LiveScoreProps } from "./components/LiveScore/LiveScore";
 function App() {
     const [matchPhase, setMatchPhase] = useState<string>('pre_match');
 
-    const handlePhaseChange = (newPhase: string) => {
-        setMatchPhase(newPhase);
-    };
+    const liveScoreProps: LiveScoreProps = {
+        onPhaseChange: (newPhase: string) => setMatchPhase(newPhase)
+    }
 
     const rotatingWhenMatch = matchPhase === 'match' ? 'rotating' : '';
     const color = matchPhase === 'pre_match' ? 'yellow'
@@ -35,7 +35,7 @@ function App() {
                 </div>
                 {/*{matchPhase}*/}
                 <br/>
-                <LiveScore onPhaseChange={handlePhaseChange} />
+                <LiveScore { ...liveScoreProps } />
             </header>
         </div>
     );

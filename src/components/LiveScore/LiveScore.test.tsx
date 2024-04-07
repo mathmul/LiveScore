@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, waitFor, screen, within} from '@testing-library/react';
+import {render, screen, within} from '@testing-library/react';
 import LiveScore from './LiveScore';
 import useLiveScore from '../../hooks/useLiveScore'
 
@@ -61,10 +61,8 @@ describe('LiveScore', () => {
         });
         render(<LiveScore />);
 
-        await waitFor(() => {
-            const rows = screen.getAllByTestId('MatchRow');
-            expect(rows).toHaveLength(mockLiveScoresData.matches.length);
-        });
+        const rows = await screen.findAllByTestId('MatchRow');
+        expect(rows).toHaveLength(mockLiveScoresData.matches.length);
     });
 
     it('has accessibility attributes set correctly', async () => {
@@ -75,11 +73,9 @@ describe('LiveScore', () => {
         });
         render(<LiveScore />);
 
-        await waitFor(() => {
-            const liveScore = screen.getByTestId('LiveScore');
-            expect(liveScore).toHaveAttribute('aria-live', 'polite');
-            expect(liveScore).toHaveAttribute('aria-label', 'Live score updates');
-        });
+        const liveScore = await screen.findByTestId('LiveScore');
+        expect(liveScore).toHaveAttribute('aria-live', 'polite');
+        expect(liveScore).toHaveAttribute('aria-label', 'Live score updates');
     });
 
     it('renders details of live scores correctly once data is fetched', async () => {

@@ -2,18 +2,23 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TeamCrest, { TeamCrestProps } from './TeamCrest';
 
-describe('TeamCrest', () => {
-    const mockProps : TeamCrestProps = {
-        abbreviation: "SVN",
-        crestSrc: './assets/team-crests/logo_8982012.png',
-        name: "Slovenia",
-        orientation: 'left'
-    };
+const mockProps : TeamCrestProps = {
+    abbreviation: "TMO",
+    crestSrc: 'crestSrc',
+    name: "TeamMock",
+    orientation: 'left'
+};
 
+describe('TeamCrest', () => {
     it('renders without crashing', () => {
         render(<TeamCrest {...mockProps} />);
-        const element = screen.getByTestId('TeamCrestLeft');
-        expect(element).toBeInTheDocument();
+        expect(screen.getByTestId('TeamCrestLeft')).toBeInTheDocument();
+    });
+
+    it('respects orientation', () => {
+        const rightProps : TeamCrestProps = { ...mockProps, orientation: 'right' };
+        render(<TeamCrest {...rightProps} />);
+        expect(screen.getByTestId('TeamCrestRight')).toBeInTheDocument();
     });
 
     it('displays the correct team abbreviation', () => {
@@ -26,12 +31,5 @@ describe('TeamCrest', () => {
         const crestImage = screen.getByAltText(`Crest of ${mockProps.name}`);
         expect(crestImage).toBeInTheDocument();
         expect(crestImage).toHaveAttribute('src', mockProps.crestSrc);
-    });
-
-    it('respects orientation', () => {
-        const rightProps : TeamCrestProps = { ...mockProps, orientation: 'right' };
-        render(<TeamCrest {...rightProps} />);
-        const rightContainer = screen.getByTestId('TeamCrestRight');
-        expect(rightContainer).toBeInTheDocument();
     });
 });
