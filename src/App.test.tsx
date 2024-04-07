@@ -1,8 +1,8 @@
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 import axios from "axios";
-import {LiveScoreResponse} from "./services/api";
+import { LiveScoreResponse } from "./services/api";
 
 // FIXME: Not sure how to resolve issues with axios import other than adding all this extra code
 // FIXME: ## FROM
