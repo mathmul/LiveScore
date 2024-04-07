@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://livescore.test:8010/';
+const API_URL = 'http://vgcommonstaging.aitcloud.de/livescore/';
 
 export type LiveScoreResponse = {
     phase: string;

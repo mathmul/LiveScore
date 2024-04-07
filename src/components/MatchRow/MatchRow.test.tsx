@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import MatchRow, { MatchRowProps } from './MatchRow';
 import { capitalize } from "../../utils/stringUtils";
-import TeamFlag from '../TeamFlag/TeamFlag';
+import TeamCrest from '../TeamCrest/TeamCrest';
 
 jest.mock('../ScoreBox/ScoreBox', () => (props: any) => <div data-testid="ScoreBox"></div>);
-jest.mock('../TeamFlag/TeamFlag');
+jest.mock('../TeamCrest/TeamCrest');
 
 afterEach(() => {
     jest.clearAllMocks();
@@ -13,8 +13,8 @@ afterEach(() => {
 
 describe('MatchRow', () => {
     const mockProps : MatchRowProps = {
-        home_team: { abbreviation: 'HOM', flagSrc: 'home_flag_url', name: 'HomeTeam' },
-        away_team: { abbreviation: 'AWY', flagSrc: 'away_flag_url', name: 'AwayTeam' },
+        home_team: { abbreviation: 'HOM', crestSrc: 'HomeTeamCrestSrc', name: 'HomeTeam' },
+        away_team: { abbreviation: 'AWY', crestSrc: 'AwayTeamCrestSrc', name: 'AwayTeam' },
         homeScore: 1,
         awayScore: 2
     };
@@ -24,13 +24,13 @@ describe('MatchRow', () => {
         expect(screen.getByTestId('MatchRow')).toBeInTheDocument();
     });
 
-    it('displays TeamFlag components for home and away teams', () => {
-        (TeamFlag as jest.Mock).mockImplementation(({ orientation }) => (
-            <div data-testid={`TeamFlag${capitalize(orientation)}`}></div>
+    it('displays TeamCrest components for home and away teams', () => {
+        (TeamCrest as jest.Mock).mockImplementation(({ orientation }) => (
+            <div data-testid={`TeamCrest${capitalize(orientation)}`}></div>
         ));
         render(<MatchRow {...mockProps} />);
-        expect(screen.getByTestId('TeamFlagLeft')).toBeInTheDocument();
-        expect(screen.getByTestId('TeamFlagRight')).toBeInTheDocument();
+        expect(screen.getByTestId('TeamCrestLeft')).toBeInTheDocument();
+        expect(screen.getByTestId('TeamCrestRight')).toBeInTheDocument();
     });
 
     it('displays ScoreBox', () => {
@@ -38,21 +38,21 @@ describe('MatchRow', () => {
         expect(screen.getByTestId('ScoreBox')).toBeInTheDocument();
     });
 
-    it('passes the correct props to TeamFlag components', () => {
+    it('passes the correct props to TeamCrest components', () => {
         render(<MatchRow {...mockProps} />);
-        expect(TeamFlag).toHaveBeenCalledWith(
+        expect(TeamCrest).toHaveBeenCalledWith(
             expect.objectContaining({
                 abbreviation: mockProps.home_team.abbreviation,
-                flagSrc: mockProps.home_team.flagSrc,
+                crestSrc: mockProps.home_team.crestSrc,
                 name: mockProps.home_team.name,
                 orientation: 'left',
             }),
             {},
         );
-        expect(TeamFlag).toHaveBeenCalledWith(
+        expect(TeamCrest).toHaveBeenCalledWith(
             expect.objectContaining({
                 abbreviation: mockProps.away_team.abbreviation,
-                flagSrc: mockProps.away_team.flagSrc,
+                crestSrc: mockProps.away_team.crestSrc,
                 name: mockProps.away_team.name,
                 orientation: 'right',
             }),
