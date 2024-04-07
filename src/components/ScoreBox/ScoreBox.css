@@ -1,0 +1,16 @@
+@keyframes goalScored {
+    0% { background-color: #006de1; }
+    50% { background-color: #006de1; }
+    100% { background-color: #00a5e1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.football-icon.show-and-fade {
+    opacity: 1;
+    animation: fadeOut 2s ease-out forwards;
+}

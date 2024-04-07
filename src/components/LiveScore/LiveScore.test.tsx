@@ -28,11 +28,11 @@ const mockLiveScoresData = {
     ]
 };
 
-afterEach(() => {
-    jest.resetAllMocks();
-});
-
 describe('LiveScore', () => {
+    afterEach(() => {
+        jest.resetAllMocks();
+    });
+
     it('displays loading state initially', () => {
         (useLiveScore as jest.Mock).mockReturnValue({
             liveScores: null,
