@@ -28,6 +28,10 @@ const mockLiveScoresData = {
     ]
 };
 
+afterEach(() => {
+    jest.resetAllMocks();
+});
+
 describe('LiveScore', () => {
     it('displays loading state initially', () => {
         (useLiveScore as jest.Mock).mockReturnValue({
@@ -63,6 +67,21 @@ describe('LiveScore', () => {
         });
     });
 
+    it('has accessibility attributes set correctly', async () => {
+        (useLiveScore as jest.Mock).mockReturnValue({
+            liveScores: mockLiveScoresData,
+            error: null,
+            loading: false,
+        });
+        render(<LiveScore />);
+
+        await waitFor(() => {
+            const liveScore = screen.getByTestId('LiveScore');
+            expect(liveScore).toHaveAttribute('aria-live', 'polite');
+            expect(liveScore).toHaveAttribute('aria-label', 'Live score updates');
+        });
+    });
+
     it('renders details of live scores correctly once data is fetched', async () => {
         (useLiveScore as jest.Mock).mockReturnValue({
             liveScores: mockLiveScoresData,
@@ -81,8 +100,4 @@ describe('LiveScore', () => {
         expect(getByText('KIE')).toBeInTheDocument();
         expect(getByText('0:1')).toBeInTheDocument();
     });
-});
-
-afterEach(() => {
-    jest.resetAllMocks();
 });

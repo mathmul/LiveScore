@@ -40,7 +40,7 @@ const LiveScore = () => {
     }
 
     return (
-        <LiveScoreContainer data-testid="LiveScore">
+        <LiveScoreContainer data-testid="LiveScore" aria-live="polite" aria-label="Live score updates">
             {liveScores.matches.map((match) => {
                 const homeTeam = liveScores.teams.find(team => team.team_id === match.home_team_id);
                 const awayTeam = liveScores.teams.find(team => team.team_id === match.away_team_id);
