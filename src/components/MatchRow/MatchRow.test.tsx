@@ -7,17 +7,17 @@ import TeamCrest from '../TeamCrest/TeamCrest';
 jest.mock('../ScoreBox/ScoreBox', () => () => <div data-testid="ScoreBox"></div>);
 jest.mock('../TeamCrest/TeamCrest');
 
+const mockProps : MatchRowProps = {
+    home_team: { abbreviation: 'HOM', crestSrc: 'HomeTeamCrestSrc', name: 'HomeTeam' },
+    away_team: { abbreviation: 'AWY', crestSrc: 'AwayTeamCrestSrc', name: 'AwayTeam' },
+    homeScore: 1,
+    awayScore: 2
+};
+
 describe('MatchRow', () => {
     afterEach(() => {
         jest.clearAllMocks();
     });
-
-    const mockProps : MatchRowProps = {
-        home_team: { abbreviation: 'HOM', crestSrc: 'HomeTeamCrestSrc', name: 'HomeTeam' },
-        away_team: { abbreviation: 'AWY', crestSrc: 'AwayTeamCrestSrc', name: 'AwayTeam' },
-        homeScore: 1,
-        awayScore: 2
-    };
 
     it('renders without crashing', () => {
         render(<MatchRow {...mockProps} />);
