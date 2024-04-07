@@ -3,6 +3,8 @@ import useLiveScore from '../../hooks/useLiveScore';
 import MatchRow from '../MatchRow/MatchRow';
 import styled from "styled-components";
 
+const IMAGES_URL = 'https://vgcommonstaging.aitcloud.de/livescore/images'
+
 const LiveScoreContainer = styled.div`
     --borderColor: #999;
     --spacingX: .6em;
@@ -38,7 +40,7 @@ const LiveScore = () => {
     }
 
     return (
-        <LiveScoreContainer>
+        <LiveScoreContainer data-testid="LiveScore">
             {liveScores.matches.map((match) => {
                 const homeTeam = liveScores.teams.find(team => team.team_id === match.home_team_id);
                 const awayTeam = liveScores.teams.find(team => team.team_id === match.away_team_id);
@@ -53,12 +55,12 @@ const LiveScore = () => {
                         key={match.match_id}
                         home_team={{
                             abbreviation: homeTeam.team_name_short,
-                            crestSrc: `./assets/team-crests/logo_${ homeTeam.team_id }.png`,
+                            crestSrc: `${ IMAGES_URL }/logo_${ homeTeam.team_id }.png`,
                             name: homeTeam.team_name
                         }}
                         away_team={{
                             abbreviation: awayTeam.team_name_short,
-                            crestSrc: `./assets/team-crests/logo_${ awayTeam.team_id }.png`,
+                            crestSrc: `${ IMAGES_URL }/logo_${ awayTeam.team_id }.png`,
                             name: awayTeam.team_name
                         }}
                         homeScore={homeScore}
