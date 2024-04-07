@@ -14,7 +14,7 @@ const LiveScoreContainer = styled.div`
     --spacingX: .6em;
     --spacingY: .2em;
     
-    font-size: 1.2rem;
+    font-size: min(1.2rem, 4vw);
     font-weight: bold;
     font-family: Arial, sans-serif;
     
