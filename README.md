@@ -3,39 +3,63 @@
 This live score display app is built using [Create React App](https://github.com/facebook/create-react-app) and
 showcases real-time sports game scores.
 
+## Table of Contents
+- [Live Score Display App](#live-score-display-app)
+    - [Developer's note](#developers-note)
+    - [Project Overview](#project-overview)
+        - [Features](#features)
+        - [Technology Stack](#technology-stack)
+    - [Getting Started](#getting-started)
+    - [Testing](#testing)
+    - [Build for deployment](#build-for-deployment)
+    - [Learn More](#learn-more)
+
 ## Developer's note
 
 This is my first time using React for a project from scratch, so there's bound to be mistakes. Likely there are
 dependencies installed that aren't even used in the project.
 
-## Quick Start
+## Project Overview
 
-This project uses Yarn as its package manager. Here's how to get it running:
+The Live Score Display App showcases real-time scores of sports matches in a user-friendly interface. It's perfect for
+sports enthusiasts who want to stay updated on their favorite teams and matches without missing a beat.
 
-### `yarn start`
+### Features
 
-Starts the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-The app will reload if you edit and save your files.
+- Real-Time Updates: Scores are updated in real-time, ensuring you have the latest information.
+- Multiple Sports Support: While initially focusing on football (soccer), the architecture allows for easy expansion to other sports.
+- Accessibility Enhanced: Designed with accessibility in mind, ensuring all users can navigate and understand the score updates effectively.
+- Responsive Design: Works seamlessly across devices, providing a consistent experience whether you're on a desktop or mobile.
 
-### `yarn test`
+### Technology Stack
 
-Runs the test suite in interactive watch mode. See more about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests).
+- React: Utilizes React for efficient UI rendering and state management.
+- TypeScript: Ensures type safety across the app, enhancing code quality and maintainability.
+- Styled Components: Leverages styled-components for scoped styling and theme management.
+- React Testing Library: For robust unit and integration tests, ensuring reliability.
 
-### `yarn build`
+## Getting Started
 
-Builds the app for production to the `build` folder, optimizing it for best performance. The output is minified and
-filenames include hashes. Your app is then ready for deployment. Learn more about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment).
+To run the app locally:
 
-### `yarn eject`
+```shell
+yarn install    # Install dependencies
+yarn start      # Run the app in development mode
+```
 
-**Caution: irreversible operation.** Use `eject` to customize build tool and configuration choices. This command copies
-all config files and dependencies directly into your project, so you have full control. Note: Once you `eject`, there's
-no going back!
+## Testing
 
-If you don’t want to eject, that's okay! The setup is intended for small to midsize deployments, and you can make many
-customizations within the limitations of Create React App.
+Execute tests using the following command:
+
+```shell
+yarn test       # Run the test suite
+```
+
+## Build for deployment
+
+```shell
+yarn build      # Build an optimized version for deployment
+```
 
 ## Learn More
 
